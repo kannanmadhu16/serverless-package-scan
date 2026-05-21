@@ -50,7 +50,26 @@ jobs:
   ########################################
   # Add a job for snyk scan of your code #
   ########################################
-
+  ########################################
+  # Trial 1 #
+  ########################################
+    snyk-checks:
+      runs-on: ubuntu-latest
+      needs: Initial-Checks
+      outputs:
+        status: ${{ job.status }}
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+  
+        - name: Setup Snyk CLI
+          run: npm install -g snyk
+  
+        - name: Run Snyk Code Test
+          run: snyk code test
+  
+        - name: Run Snyk Test
+          run: snyk test
   ########################################
   # job name: snyk-checks
   # Enable:
