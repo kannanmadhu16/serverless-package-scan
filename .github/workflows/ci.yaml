@@ -53,12 +53,12 @@ jobs:
   ########################################
   # Trial 1 #
   ########################################
-    snyk-checks:
-      runs-on: ubuntu-latest
-      needs: Initial-Checks
-      outputs:
+  snyk-checks:
+    runs-on: ubuntu-latest
+    needs: Initial-Checks
+    outputs:
         status: ${{ job.status }}
-      steps:
+    steps:
         - name: Checkout
           uses: actions/checkout@v3
   
